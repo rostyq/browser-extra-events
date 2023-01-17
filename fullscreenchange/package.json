@@ -1,0 +1,32 @@
+{
+  "name": "@browser-extra-events/fullscreenchange",
+  "version": "1.0.1",
+  "description": "Browser event for browser fullscreen change",
+  "license": "MIT",
+  "author": "Rostyslav Bohomaz <rostyslav.db@gmail.com>",
+  "keywords": [
+    "browser",
+    "event",
+    "fullscreen",
+    "change"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rostyq/browser-extra-events"
+  },
+  "browser": "dist/fullscreenchange.js",
+  "types": "dist/fullscreenchange.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && npm run types",
+    "types": "tsc -d lib/fullscreenchange.ts --emitDeclarationOnly --outDir dist",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "vite": "^2.9.5"
+  }
+}

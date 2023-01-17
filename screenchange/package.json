@@ -1,0 +1,33 @@
+{
+  "name": "@browser-extra-events/screenchange",
+  "version": "1.0.1",
+  "description": "Browser event for screen change",
+  "license": "MIT",
+  "author": "Rostyslav Bohomaz <rostyslav.db@gmail.com>",
+  "keywords": [
+    "browser",
+    "event",
+    "window",
+    "move"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rostyq/browser-extra-events"
+  },
+  "browser": "dist/screenchange.js",
+  "types": "dist/screenchange.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && npm run types",
+    "types": "tsc -d lib/screenchange.ts --emitDeclarationOnly --outDir dist",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "extend-event-target": "^1.0.2",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.5"
+  }
+}

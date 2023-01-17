@@ -1,0 +1,10 @@
+{
+  "name": "browser-extra-events",
+  "workspaces": [
+    "fullscreenchange",
+    "screenchange",
+    "windowdisplace",
+    "windowmove",
+    "zoomchange"
+  ]
+}
