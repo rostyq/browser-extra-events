@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-if ("onzoom" in window === false) {
+if (("onzoom" in window) === false) {
   // @ts-ignore
   let availLeft: number = screen.availLeft;
   // @ts-ignore
@@ -35,8 +35,14 @@ if ("onzoom" in window === false) {
   if (!localStorage.getItem(ID)) localStorage.setItem(ID, window.devicePixelRatio.toString());
 
   let listener: typeof window.onzoom = null;
+  let mediaQueryList: MediaQueryList | null = null;
 
   const update = () => {
+    if ((mediaQueryList !== null) && !("addEventListener" in mediaQueryList)) {
+      // @ts-ignore
+      mediaQueryList.removeListener(update);
+    }
+
     // Need to check that `devicePixelRatio` change wasn't caused by
     // moving to another screen with different DPI.
     if ((
@@ -66,8 +72,14 @@ if ("onzoom" in window === false) {
       ID = getScreenId();
       localStorage.setItem(ID, defaultDevicePixelRatio.toString());
     }
-    matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`)
-      .addEventListener("change", update, { once: true });
+    mediaQueryList = matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`);
+    
+    if ("addEventListener" in mediaQueryList) {
+      mediaQueryList.addEventListener("change", update, { once: true });
+    } else {
+      // @ts-ignore
+      mediaQueryList.addListener("change", update);
+    }
   }
 
   Object.defineProperties(window, {

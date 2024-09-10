@@ -1,6 +1,6 @@
 {
   "name": "@browser-extra-events/zoomchange",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Browser event for zoom change",
   "license": "MIT",
   "author": "Rostyslav Bohomaz <rostyslav.db@gmail.com>",
